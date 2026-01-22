@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Job Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📋 Weekly Job Tracker</h1>
+            <p class="subtitle">Verwalte deine Bewerbungen wochenweise</p>
+        </header>
+
+        <div class="controls">
+            <div class="week-selector">
+                <button id="prevWeek" class="btn-nav">◀ Vorherige Woche</button>
+                <div class="week-info">
+                    <span id="currentWeek">KW 1, 2026</span>
+                    <span id="dateRange" class="date-range"></span>
+                </div>
+                <button id="nextWeek" class="btn-nav">Nächste Woche ▶</button>
+            </div>
+            <button id="todayBtn" class="btn-today">Zur aktuellen Woche</button>
+        </div>
+
+        <div class="add-job-section">
+            <button id="addJobBtn" class="btn-primary">+ Neue Bewerbung</button>
+        </div>
+
+        <div id="jobModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 id="modalTitle">Neue Bewerbung</h2>
+                <form id="jobForm">
+                    <div class="form-group">
+                        <label for="companyName">Firma *</label>
+                        <input type="text" id="companyName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="position">Position *</label>
+                        <input type="text" id="position" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="applicationDate">Bewerbungsdatum *</label>
+                        <input type="date" id="applicationDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status *</label>
+                        <select id="status" required>
+                            <option value="applied">Beworben</option>
+                            <option value="screening">Screening</option>
+                            <option value="interview">Interview</option>
+                            <option value="offer">Angebot</option>
+                            <option value="rejected">Absage</option>
+                            <option value="accepted">Angenommen</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="salary">Gehalt (optional)</label>
+                        <input type="text" id="salary" placeholder="z.B. 60.000€">
+                    </div>
+                    <div class="form-group">
+                        <label for="notes">Notizen (optional)</label>
+                        <textarea id="notes" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactPerson">Ansprechpartner (optional)</label>
+                        <input type="text" id="contactPerson">
+                    </div>
+                    <div class="form-group">
+                        <label for="url">URL zur Stelle (optional)</label>
+                        <input type="url" id="url" placeholder="https://...">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Speichern</button>
+                        <button type="button" id="cancelBtn" class="btn-secondary">Abbrechen</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-value" id="totalJobs">0</div>
+                <div class="stat-label">Bewerbungen diese Woche</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="interviewCount">0</div>
+                <div class="stat-label">Interviews</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="offerCount">0</div>
+                <div class="stat-label">Angebote</div>
+            </div>
+        </div>
+
+        <div class="jobs-list" id="jobsList">
+            <!-- Jobs werden hier dynamisch eingefügt -->
+        </div>
+
+        <div class="empty-state" id="emptyState">
+            <p>📭 Noch keine Bewerbungen für diese Woche</p>
+            <p class="empty-hint">Klicke auf "+ Neue Bewerbung" um zu starten</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
